@@ -5,28 +5,28 @@
 
 {% block content %}
 <div class="max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-    <article class="bg-white rounded-lg shadow-md overflow-hidden">
+    <article class="tile tile-white overflow-hidden">
         {% if page.blog_image %}
         {% image page.blog_image width-800 class="w-full h-64 object-cover" %}
         {% endif %}
         <div class="p-8">
             <div class="flex flex-wrap gap-2 mb-4">
                 {% for tag in page.tags.all %}
-                <span class="px-3 py-1 bg-blue-100 text-blue-800 text-sm rounded-full">
+                <span class="px-3 py-1 text-sm rounded-full" style="background-color: var(--pastel-mint); color: var(--accent-dark);">
                     {{ tag }}
                 </span>
                 {% endfor %}
             </div>
-            <h1 class="text-3xl font-bold text-gray-900 mb-4">{{ page.title }}</h1>
-            <time class="text-gray-500 block mb-6">
+            <h1 class="text-3xl font-bold mb-4" style="color: var(--text-dark);">{{ page.title }}</h1>
+            <time class="block mb-6" style="color: var(--text-light);">
                 {{ page.first_published_at|date:"d.m.Y" }}
             </time>
             {% if page.excerpt %}
-            <div class="prose prose-lg mb-6 text-gray-600 bg-gray-50 p-4 rounded">
+            <div class="prose prose-lg mb-6 p-4 rounded" style="background-color: var(--pastel-blue); color: var(--text-light);">
                 {{ page.excerpt|richtext }}
             </div>
             {% endif %}
-            <div class="prose prose-lg max-w-none">
+            <div class="prose prose-lg max-w-none" style="color: var(--text-dark);">
                 {{ page.content|richtext }}
             </div>
         </div>

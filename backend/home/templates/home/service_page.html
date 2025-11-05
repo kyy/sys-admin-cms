@@ -5,18 +5,18 @@
 
 {% block content %}
 <div class="max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-    <article class="bg-white rounded-lg shadow-md overflow-hidden">
+    <article class="tile tile-white overflow-hidden">
         {% if page.service_image %}
         {% image page.service_image width-800 class="w-full h-64 object-cover" %}
         {% endif %}
         <div class="p-8">
-            <h1 class="text-3xl font-bold text-gray-900 mb-4">{{ page.title }}</h1>
+            <h1 class="text-3xl font-bold mb-4" style="color: var(--text-dark);">{{ page.title }}</h1>
             {% if page.short_description %}
-            <div class="prose prose-lg mb-6 text-gray-600">
+            <div class="prose prose-lg mb-6" style="color: var(--text-light);">
                 {{ page.short_description|richtext }}
             </div>
             {% endif %}
-            <div class="prose prose-lg max-w-none">
+            <div class="prose prose-lg max-w-none" style="color: var(--text-dark);">
                 {{ page.full_description|richtext }}
             </div>
         </div>

@@ -1,0 +1,6 @@
+*.logs
+*.log
+/idea
+.venv
+/frontend/node_modules
+/backend/static/

@@ -1,0 +1,5 @@
+wagtail
+whitenoise
+pip-tools
+django-vite
+django-compressor

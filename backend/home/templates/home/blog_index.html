@@ -6,38 +6,38 @@
 {% block content %}
 <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
     <div class="mb-8">
-        <h1 class="text-4xl font-bold text-gray-900 mb-4">{{ page.title }}</h1>
+        <h1 class="text-4xl font-bold mb-4" style="color: var(--text-dark);">{{ page.title }}</h1>
         {% if page.description %}
-        <div class="prose prose-lg max-w-none">
+        <div class="prose prose-lg max-w-none" style="color: var(--text-light);">
             {{ page.description|richtext }}
         </div>
         {% endif %}
     </div>
 
     {% if posts %}
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="tile-grid">
         {% for post in posts %}
-        <article class="bg-white rounded-lg shadow-md overflow-hidden">
+        <article class="tile tile-white overflow-hidden">
             {% if post.blog_image %}
             {% image post.blog_image fill-400x250 class="w-full h-48 object-cover" %}
             {% endif %}
             <div class="p-6">
                 <div class="flex flex-wrap gap-2 mb-3">
                     {% for tag in post.tags.all %}
-                    <span class="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded">
+                    <span class="px-2 py-1 text-xs rounded" style="background-color: var(--pastel-mint); color: var(--accent-dark);">
                         {{ tag }}
                     </span>
                     {% endfor %}
                 </div>
-                <h2 class="text-xl font-semibold text-gray-800 mb-3">
-                    <a href="{% pageurl post %}" class="hover:text-blue-600">
+                <h2 class="text-xl font-semibold mb-3" style="color: var(--text-dark);">
+                    <a href="{% pageurl post %}" class="hover:text-teal-600">
                         {{ post.title }}
                     </a>
                 </h2>
-                <div class="text-gray-600 prose prose-sm mb-4">
+                <div class="prose prose-sm mb-4" style="color: var(--text-light);">
                     {{ post.excerpt|richtext }}
                 </div>
-                <time class="text-sm text-gray-500">
+                <time class="text-sm" style="color: var(--text-light);">
                     {{ post.first_published_at|date:"d.m.Y" }}
                 </time>
             </div>
@@ -45,7 +45,7 @@
         {% endfor %}
     </div>
     {% else %}
-    <p class="text-center text-gray-500 text-lg">Пока нет новостей.</p>
+    <p class="text-center text-lg" style="color: var(--text-light);">Пока нет новостей.</p>
     {% endif %}
 </div>
 {% endblock %}

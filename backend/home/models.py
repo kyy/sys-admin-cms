@@ -9,6 +9,7 @@ from modelcluster.contrib.taggit import ClusterTaggableManager
 from taggit.models import TaggedItemBase
 
 
+
 class ServiceSection(Page):
     template = 'home/service_section.html'
 
