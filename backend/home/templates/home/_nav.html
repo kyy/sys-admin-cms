@@ -45,48 +45,49 @@
     </div>
 
     <!-- Services Mega Menus - Dynamic for each section -->
-    {% for section in global_service_sections %}
-    {% with categories=section.get_children.specific %}
-    {% if categories %}
-    <div id="mega-menu-full-dropdown-{{ section.id }}" class="mt-1 border-gray-200 shadow-xs bg-gray-50 md:bg-white border-y dark:bg-gray-800 dark:border-gray-600 hidden">
-        <div class="grid max-w-screen-xl px-4 py-5 mx-auto text-gray-900 dark:text-white sm:grid-cols-2 md:px-6">
-            <ul>
-                {% for category in categories %}
-                    {% if forloop.counter0|divisibleby:2 %}
-                    <li>
-                        <a href="{{ category.url }}" class="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
-                            <div class="font-semibold">{{ category.title }}</div>
-                            {% if category.description %}
-                            <span class="text-sm text-gray-500 dark:text-gray-400">
-                                {{ category.description|striptags|truncatewords:10 }}
-                            </span>
-                            {% endif %}
-                        </a>
-                    </li>
+{% for section in global_service_sections %}
+{% with categories=section.get_children.specific %}
+{% if categories %}
+<div id="mega-menu-full-dropdown-{{ section.id }}" class="mt-1 border-gray-200 shadow-xs bg-gray-50 md:bg-white border-y dark:bg-gray-800 dark:border-gray-600 hidden">
+    <div class="max-w-screen-xl px-4 py-3 mx-auto text-gray-900 dark:text-white md:px-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-1">
+            {% for category in categories %}
+            <div class="relative group">
+                <a href="{{ category.url }}"
+                   data-tooltip-target="tooltip-category-{{ category.id }}"
+                   class="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <div class="font-semibold flex items-center">
+                        {{ category.title }}
+                    </div>
+                    {% if category.description %}
+                    <span class="text-sm text-gray-500 dark:text-gray-400">
+                        {{ category.description|striptags|truncatewords:10 }}
+                    </span>
                     {% endif %}
-                {% endfor %}
-            </ul>
-            <ul>
-                {% for category in categories %}
-                    {% if not forloop.counter0|divisibleby:2 %}
-                    <li>
-                        <a href="{{ category.url }}" class="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
-                            <div class="font-semibold">{{ category.title }}</div>
-                            {% if category.description %}
-                            <span class="text-sm text-gray-500 dark:text-gray-400">
-                                {{ category.description|striptags|truncatewords:10 }}
-                            </span>
-                            {% endif %}
-                        </a>
-                    </li>
-                    {% endif %}
-                {% endfor %}
-            </ul>
+                </a>
+
+                <!-- Tooltip for category with services -->
+                {% if category.get_children.live %}
+                <div id="tooltip-category-{{ category.id }}" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-xs opacity-0 tooltip dark:bg-gray-700">
+                    <ul class="space-y-1">
+                        {% for service in category.get_children.live|slice:":5" %}
+                        <li class="text-gray-300 text-xs">• {{ service.title }}</li>
+                        {% endfor %}
+                        {% if category.get_children.live.count > 5 %}
+                        <li class="text-gray-400 text-xs">... и еще {{ category.get_children.live.count|add:"-5" }}</li>
+                        {% endif %}
+                    </ul>
+                    <div class="tooltip" data-popper-arrow></div>
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
         </div>
     </div>
-    {% endif %}
-    {% endwith %}
-    {% endfor %}
+</div>
+{% endif %}
+{% endwith %}
+{% endfor %}
 </nav>
 
 {% block js %}
