@@ -11,7 +11,7 @@
     {% vite_asset 'js/main.js' %}
 
 </head>
-<body class="bg-gray-50 dark:bg-gray-900">
+<body class="mx-auto max-w-screen-xl p-4 bg-gray-50 sm:p-6 dark:bg-gray-800">
 {% wagtailuserbar %}
 
     {% include 'home/_nav.html' %}
@@ -25,5 +25,7 @@
 {% include 'home/_footer.html' %}
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+{% block js %}
+        {% endblock %}
 </body>
 </html>

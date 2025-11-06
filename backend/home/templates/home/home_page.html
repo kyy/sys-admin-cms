@@ -5,4 +5,121 @@
 
 {% block content %}
 
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Системное администрирование | Профессиональные IT-услуги</title>
+
+</head>
+<body class="bg-gray-50">
+
+    <!-- Hero Section -->
+
+<section class="bg-center bg-no-repeat bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/conference.jpg')] bg-gray-700 bg-blend-multiply">
+    <div class="px-4 mx-auto max-w-screen-xl text-center py-12 lg:py-10">
+        <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">Профессиональное системное администрирование</h1>
+        <p class="mb-8 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-48">Полный комплекс IT-услуг для вашего бизнеса. Надежность, безопасность и производительность вашей инфраструктуры.</p>
+        <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0">
+            <a href="#" class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
+                Заказать звонок
+                <svg class="w-3.5 h-3.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                </svg>
+            </a>
+            <a href="#" class="inline-flex justify-center hover:text-gray-900 items-center py-3 px-5 sm:ms-4 text-base font-medium text-center text-white rounded-lg border border-white hover:bg-gray-100 focus:ring-4 focus:ring-gray-400">
+                Спросить
+            </a>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Services Section -->
+    <section class="py-8 bg-white">
+        <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-8 lg:px-6">
+            <div class="mx-auto max-w-screen-sm text-center mb-8 lg:mb-8">
+                <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900">Популярные сервисы</h2>
+                <p class="font-light text-gray-500 lg:mb-16 sm:text-xl">Полный спектр услуг системного администрирования для бизнеса любого масштаба</p>
+            </div>
+            <div class="grid gap-8 mb-6 lg:mb-16 md:grid-cols-2 lg:grid-cols-3">
+
+            {% for category in featured_services %}
+
+                    {% if category %}
+
+
+<a href="{{ category.url }}" class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+
+<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">"{{ category.title}}</h5>
+<p class="font-normal text-gray-700 dark:text-gray-400">"{{ category.short_description|striptags }}</p>
+</a>
+
+
+                    {% endif %}
+                {% endfor %}
+</div>
+
+        </div>
+    </section>
+
+
+    <!-- Stats Section -->
+    <section class="bg-primary-700">
+        <div class="max-w-screen-xl px-4 py-8 mx-auto text-center lg:py-16 lg:px-6">
+            <dl class="grid max-w-screen-md gap-8 mx-auto text-white sm:grid-cols-3">
+                <div class="flex flex-col items-center justify-center">
+                    <dt class="mb-2 text-3xl md:text-4xl font-extrabold text-black">150+</dt>
+                    <dd class="font-light text-black">довольных клиентов</dd>
+                </div>
+                <div class="flex flex-col items-center justify-center">
+                    <dt class="mb-2 text-3xl md:text-4xl font-extrabold text-black">99.9%</dt>
+                    <dd class="font-light text-black">доступность сервисов</dd>
+                </div>
+                <div class="flex flex-col items-center justify-center">
+                    <dt class="mb-2 text-3xl md:text-4xl font-extrabold text-black">24/7</dt>
+                    <dd class="font-light text-black">техническая поддержка</dd>
+                </div>
+            </dl>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-12 bg-white">
+        <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+            <div class="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
+                <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900">Свяжитесь с нами</h2>
+                <p class="mb-5 font-light text-gray-500 sm:text-xl">Готовы обсудить ваши IT-потребности? Оставьте заявку и мы свяжемся с вами в ближайшее время.</p>
+            </div>
+            <div class="mx-auto max-w-screen-md">
+                <form class="space-y-8">
+                    <div>
+                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Ваше имя</label>
+                        <input type="text" id="name" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5" placeholder="Иван Иванов" required>
+                    </div>
+                    <div>
+                        <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Ваш email</label>
+                        <input type="email" id="email" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5" placeholder="name@example.com" required>
+                    </div>
+                    <div>
+                        <label for="phone" class="block mb-2 text-sm font-medium text-gray-900">Телефон</label>
+                        <input type="tel" id="phone" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5" placeholder="+375 (29) 123-45-67" required>
+                    </div>
+                    <div class="sm:col-span-2">
+                        <label for="message" class="block mb-2 text-sm font-medium text-gray-900">Ваше сообщение</label>
+                        <textarea id="message" rows="6" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500" placeholder="Опишите вашу задачу..."></textarea>
+                    </div>
+                    <button type="submit" class="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-primary-700 sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300">Отправить сообщение</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
+</body>
+</html>
+
 {% endblock %}

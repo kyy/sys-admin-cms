@@ -97,6 +97,7 @@ class Service(Page):
     ]
 
     parent_page_types = ['ServiceCategory']  # Услуги создаются в категориях
+    subpage_types = []
 
     def get_service_section(self):
         """Получить секцию услуг через категорию"""
