@@ -2,20 +2,22 @@ name: Publish
 on:
   push:
     branches:
-      - master
+      - main
 jobs:
-  FTP-Deploy-Action:
-    name: FTP-Deploy-Action
+  deploy:
+    name: Deploy to FTP
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2.1.0
+        uses: actions/checkout@v4
         with:
-          fetch-depth: 2
-      
-      - name: Deploy via FTP
-        uses: SamKirkland/FTP-Deploy-Action@3.1.1
+          fetch-depth: 0  # Changed from 2 to 0 for full history
+
+      - name: FTP Deploy
+        uses: SamKirkland/FTP-Deploy-Action@4.3.4
         with:
-          ftp-server: ${{ secrets.FTP_SERVER }}
-          ftp-username: ${{ secrets.FTP_USERNAME }}
-          ftp-password: ${{ secrets.FTP_PASSWORD }}
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./
+          server-dir: ./
