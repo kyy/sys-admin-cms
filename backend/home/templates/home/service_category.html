@@ -32,11 +32,6 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {% for service in services %}
             <div class="bg-neutral-primary-soft block p-6 border border-default rounded-base shadow-xs hover:shadow-md transition-shadow duration-200 {% if service.featured %}border-2 border-accent{% endif %}">
-                {% if service.featured %}
-                <div class="mb-4 px-3 py-1 text-xs font-medium text-center bg-accent/10 text-accent rounded-base inline-block">
-                    ★ Рекомендуем
-                </div>
-                {% endif %}
 
                 {% if service.service_image %}
                 <a href="{% pageurl service %}">
@@ -45,9 +40,9 @@
                 {% endif %}
 
                 <a href="{% pageurl service %}">
-                    <h5 class="mt-6 mb-2 text-xl font-semibold tracking-tight text-heading hover:text-teal-600">
+                    <h2 class="mt-6 mb-2 text-xl font-semibold tracking-tight text-heading hover:text-teal-600">
                         {{ service.title }}
-                    </h5>
+                    </h2>
                 </a>
 
                 <div class="mb-6 text-body text-sm">
@@ -60,6 +55,11 @@
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5m14 0-4 4m4-4-4-4"/>
                     </svg>
                 </a>
+                            {% if service.featured %}
+                <div class="inline-flex ml-4 items-center px-2 py-1 ring-1 ring-inset ring-warning-subtle text-fg-warning text-sm font-medium rounded bg-warning-soft">
+                    ★ Рекомендуем
+                </div>
+                {% endif %}
             </div>
             {% endfor %}
         </div>

@@ -32,16 +32,23 @@
     </nav>
 
     <article class="tile tile-white overflow-hidden">
-        {% if page.service_image %}
-        {% image page.service_image width-800 class="w-full h-64 object-cover" %}
-        {% endif %}
-        <div class="p-8">
-            <h1 class="text-3xl font-bold mb-4">{{ page.title }}</h1>
+
+
+
+    {% image page.service_image width-1300 as hero_image %}
+<section class="bg-center bg-no-repeat bg-gray-700 bg-blend-multiply mb-2" style="background-image: url('{{ hero_image.url }}')">
+    <div class="px-4 mx-auto max-w-screen-xl text-center py-12 lg:py-10">
+        <h1 class="text-3xl font-bold mb-4 text-white text-center">{{ page.title }}</h1>
+        <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-48">
             {% if page.short_description %}
-            <div class="prose prose-lg mb-6">
-                {{ page.short_description|richtext }}
-            </div>
+                    <blockquote class="text-xl italic font-normal text-center text-heading text-white text-center">{{ page.short_description|richtext }}</blockquote>
             {% endif %}
+        </div>
+    </div>
+</section>
+
+        <div class="p-8">
+
             <div class="prose prose-lg max-w-none">
                 {{ page.full_description|richtext }}
             </div>

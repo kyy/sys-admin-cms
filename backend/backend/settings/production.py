@@ -1,7 +1,7 @@
 import re
 
 from .base import *
-
+SERVE_MEDIA = False
 DEBUG = False
 SECRET_KEY = "django-insecure-w6l!_e)mfbl-z$$8!8&ga+(#uqn@nz$u6!e5gc8%n81b=3ifbq"
 # ManifestStaticFilesStorage is recommended in production, to prevent
@@ -31,7 +31,6 @@ DJANGO_VITE = {
 }
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 STATIC_URL = "/static/"
-SERVE_MEDIA = True
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
 
