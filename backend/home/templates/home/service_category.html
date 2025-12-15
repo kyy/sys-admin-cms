@@ -14,20 +14,21 @@
         <span>{{ page.title }}</span>
     </nav>
 
-    <div class="mb-8">
-        {% if page.category_image %}
-        {% image page.category_image width-800 class="w-full h-64 object-cover rounded-base mb-6" %}
-        {% endif %}
-        <h1 class="text-4xl font-bold mb-4">{{ page.title }}</h1>
-        <div class="prose prose-lg max-w-none">
+
+{% image page.category_image width-1300 as hero_image %}
+<section class="bg-center bg-no-repeat bg-gray-700 bg-blend-multiply mb-8" style="background-image: url('{{ hero_image.url }}')">
+    <div class="px-4 mx-auto max-w-screen-xl text-center py-12 lg:py-10">
+        <h1 class="mb-6 text-4xl font-bold text-white md:text-5xl lg:text-6xl">{{ page.title }}</h1>
+        <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0 text-lg font-normal text-gray-300 lg:text-xl sm:px-16 lg:px-48">
             {{ page.description|richtext }}
         </div>
     </div>
+</section>
+
 
     <!-- Услуги в этой категории -->
     {% if services %}
     <section>
-        <h2 class="text-2xl font-bold mb-6">Услуги</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {% for service in services %}
             <div class="bg-neutral-primary-soft block p-6 border border-default rounded-base shadow-xs hover:shadow-md transition-shadow duration-200 {% if service.featured %}border-2 border-accent{% endif %}">
