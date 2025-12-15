@@ -12,21 +12,21 @@
         <div class="p-8">
             <div class="flex flex-wrap gap-2 mb-4">
                 {% for tag in page.tags.all %}
-                <span class="px-3 py-1 text-sm rounded-full" style="background-color: var(--pastel-mint); color: var(--accent-dark);">
+                <span class="px-3 py-1 text-sm rounded-full">
                     {{ tag }}
                 </span>
                 {% endfor %}
             </div>
-            <h1 class="text-3xl font-bold mb-4" style="color: var(--text-dark);">{{ page.title }}</h1>
-            <time class="block mb-6" style="color: var(--text-light);">
+            <h1 class="text-3xl font-bold mb-4">{{ page.title }}</h1>
+            <time class="block mb-6">
                 {{ page.first_published_at|date:"d.m.Y" }}
             </time>
             {% if page.excerpt %}
-            <div class="prose prose-lg mb-6 p-4 rounded" style="background-color: var(--pastel-blue); color: var(--text-light);">
+            <div class="prose prose-lg mb-6 p-4 rounded">
                 {{ page.excerpt|richtext }}
             </div>
             {% endif %}
-            <div class="prose prose-lg max-w-none" style="color: var(--text-dark);">
+            <div class="prose prose-lg max-w-none">
                 {{ page.content|richtext }}
             </div>
         </div>
